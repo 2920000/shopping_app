@@ -6,6 +6,7 @@ import CartFooter from "./CartFooter";
 
 const CartData = () => {
   const allCartProducts = useSelector(allCartProductsSelector);
+ 
   if (!allCartProducts) {
     return <></>;
   }

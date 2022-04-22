@@ -1,13 +1,13 @@
-import React, { useEffect,useRef} from "react";
+import React, { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
-import banner from "../../assets/image/banner.png"
+import banner from "../../assets/image/banner.png";
 import NewIn from "./NewIn";
 function Home() {
   return (
     <div>
       <MainBlockFirst />
       <MainBlockSecond />
-      <NewIn/>
+      <NewIn />
     </div>
   );
 }
@@ -88,21 +88,25 @@ const MainBlockSecond = () => {
       image:
         "https://cdn.shopify.com/s/files/1/2153/3679/files/EDGE_CAT_BANNER_400_x_5332.jpg?v=1646698447",
       title: "Womens Tops",
+      link: "mens-t-shirt",
     },
     {
       image:
         "https://cdn.shopify.com/s/files/1/2153/3679/files/EDGE_CAT_BANNER_400_x_533.jpg?v=1646698489",
       title: "Men's T-Shirts",
+      link: "mens-t-shirt",
     },
     {
       image:
         "https://cdn.shopify.com/s/files/1/2153/3679/files/70B213B5-E154-49B9-B653-08ECE45FB659.jpg?v=1646715457",
       title: "Women's T-shirts",
+      link: "womens-t-shirt",
     },
     {
       image:
         "https://cdn.shopify.com/s/files/1/2153/3679/files/EDGE_CAT_BANNER_400_x_5333.jpg?v=1646698589",
       title: "Men's Pants",
+      link: "womens-t-shirt",
     },
   ];
   return (
@@ -122,7 +126,7 @@ const MainBlockSecond = () => {
                 {e.title}
               </span>
               <div className="w-full font-semibold lg:font-bold text-[14px] py-0.5 text-center lg:max-w-[130px] lg:min-h-[40px] lg:flex lg:items-center lg:justify-center bg-black text-white cursor-pointer hover:bg-white hover:text-black transition-all duration-150 ">
-                MUA SẮM{" "}
+                <Link to={`/collection/${e.link}`}>MUA SẮM </Link>
               </div>
             </div>
           </div>

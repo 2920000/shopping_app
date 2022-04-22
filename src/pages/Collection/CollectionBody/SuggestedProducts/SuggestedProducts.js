@@ -16,12 +16,12 @@ function SuggestedProducts() {
     return <></>;
   }
   return (
-    <>
+    <div className="suggested">
       <p className="text-center font-semibold text-3xl my-5 lg:my-10">
         Đề xuất cho bạn
       </p>
       <ProductsSlider products={products} />
-    </>
+    </div>
   );
 }
 

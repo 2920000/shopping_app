@@ -62,9 +62,12 @@ function Purchased() {
                 </Link>
               </div>
               <div className="flex text-sm md:text-base flex-col flex-grow w-[calc(100%-100px)] ml-5">
-                <span className="whitespace-nowrap md:whitespace-normal text-ellipsis overflow-hidden">
+                <Link
+                  to={`/products/${order.slug}`}
+                  className="whitespace-nowrap md:whitespace-normal text-ellipsis overflow-hidden"
+                >
                   {order.title}
-                </span>
+                </Link>
                 <span className="text-sm">Size: {order.size}</span>
                 <span className="text-sm">Số lượng: {order.amount}</span>
               </div>

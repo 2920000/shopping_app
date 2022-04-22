@@ -1,10 +1,8 @@
 import React, { useEffect, useRef } from "react";
 import ReactDom from "react-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { userSelector } from "../../features/accountSlice";
 import {
   CLOSE_CART_SIDEBAR,
-  fetchCart,
   isCartOpeningSelector,
 } from "../../features/cartSlice";
 import useClickOutside from "../../hooks/useClickOutside";
@@ -14,7 +12,6 @@ import EmptyCart from "./EmptyCart/EmptyCart";
 
 const SidebarCart = () => {
   const dispatch = useDispatch();
-  const user = useSelector(userSelector);
   const isCartOpening = useSelector(isCartOpeningSelector);
   const cartSidebarRef = useRef();
 
@@ -32,13 +29,6 @@ const SidebarCart = () => {
   useClickOutside(cartSidebarRef, () => {
     dispatch(CLOSE_CART_SIDEBAR());
   });
-
-  useEffect(() => {
-    if (user) {
-      const userId = user._id;
-      dispatch(fetchCart(userId));
-    }
-  }, [user]);
 
   useEffect(() => {
     return () => dispatch(CLOSE_CART_SIDEBAR());

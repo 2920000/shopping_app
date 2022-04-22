@@ -1,6 +1,7 @@
 import { useLayoutEffect, useRef } from "react";
 import { GoThreeBars } from "react-icons/go";
 import { IoIosSearch } from "react-icons/io";
+import { BiUserPin } from "react-icons/bi";
 import { IoClose } from "react-icons/io5";
 import { VscAccount } from "react-icons/vsc";
 import { useDispatch, useSelector } from "react-redux";
@@ -80,7 +81,7 @@ const MobileMenuToggleIcon = () => {
   );
 };
 
-const UserExisting = () => {
+const UserExisting = ({ user }) => {
   const navigate = useNavigate();
   const userFeatureRef = useRef();
   const [userExistingRef, hovered] = useHover();
@@ -119,6 +120,9 @@ const UserExisting = () => {
         >
           <span className="absolute block w-full h-5 top-[-20px]"></span>
           <span className="absolute w-8 h-5 bg-white z-[-1] rotate-45 top-[-1px] left-[16px] "></span>
+          <span className="py-2.5 flex items-center border-b gap-2 border-border w-full  px-4 text-sm whitespace-nowrap z-20 text-light_black  hover:text-black">
+            <BiUserPin /> {user.username}
+          </span>
           {featureUser.map((e, index) => (
             <li
               onClick={() => {

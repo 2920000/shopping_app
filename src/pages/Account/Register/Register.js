@@ -1,33 +1,11 @@
-import { useEffect, useRef, useState } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import userApi from "../../../api/userApi";
 import Loading from "../../../components/Loading";
-import {
-  isLoadingSelector,
-  userSelector,
-} from "../../../features/accountSlice";
-import { validateForm } from "../../../helper";
+import { isLoadingSelector } from "../../../features/accountSlice";
 import RegisterForm from "./RegisterForm";
 
 function Register() {
-  const [success, setSuccess] = useState(false);
-  const successBoxRef = useRef();
-  const user = useSelector(userSelector);
   const isLoading = useSelector(isLoadingSelector);
-
-  useEffect(() => {
-    const payload = {
-      userId: user?._id,
-      username: user?.username,
-    };
-    if (user?.register === "success") {
-      userApi.addUser(payload);
-      setSuccess(true);
-      validateForm.clearValue();
-    }
-  }, [user]);
-
 
   return (
     <>
@@ -40,25 +18,6 @@ function Register() {
           </div>
         </div>
         {isLoading && <Loading />}
-        {success && (
-          <div className="absolute  bg-[rgba(0,0,0,0.4)] z-50 top-0 left-0 right-0 bottom-0 flex justify-center items-center ">
-            <div
-              ref={successBoxRef}
-              className="absolute flex flex-col justify-center rounded-md items-center bg-white w-[220px] py-5 "
-            >
-              <div className="w-10 h-10 ml-1 mb-1 flex items-center justify-center rounded-full border-[2.5px] border-green-500">
-                <div className=" w-3 h-4 border-r-4 rounded-sm border-r-green-500  border-b-4 border-b-green-500 rotate-45 "></div>
-              </div>
-              Đăng ký thành công!
-              <a
-                href="/account/login"
-                className="text-right text-sm mt-3 cursor-pointer  bg-green-600 text-white  py-1 px-2 rounded-sm hover:opacity-80 "
-              >
-                Đăng nhập
-              </a>
-            </div>
-          </div>
-        )}
       </div>
     </>
   );

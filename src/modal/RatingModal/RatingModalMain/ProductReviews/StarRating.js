@@ -2,7 +2,7 @@ import { AiFillStar, AiOutlineStar } from "react-icons/ai";
 
 const StarRating = ({ className, number, onClick, flex='' }) => {
   return (
-    <div className={`flex ${flex} mb-3 `}>
+    <div className={`flex ${flex}  `}>
       {Array(5)
         .fill()
         .map((star, index) => (

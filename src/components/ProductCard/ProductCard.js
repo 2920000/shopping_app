@@ -1,20 +1,22 @@
 import React, { useEffect, useRef, memo } from "react";
 import { Link } from "react-router-dom";
+import { SwiperSlide, Swiper } from "swiper/react";
 import { calculateSale, convertToPrice, qsa } from "../../helper";
+import { Autoplay, Navigation } from "swiper";
 import useHover from "../../hooks/useHover";
-
-const ProductCart = ({ product, className='',cardInforCss='' }) => {
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
+const ProductCart = ({ product, className = "", cardInforCss = "" }) => {
   const isSale = product.sale !== 0;
   const props = {
     product,
     isSale,
-    cardInforCss
+    cardInforCss,
   };
 
   return (
-    <div
-      className={`${className}  transition-all duration-150 w-full h-full `}
-    >
+    <div className={`${className}  transition-all duration-150 w-full h-full `}>
       <ProductImage {...props} />
       <ProductInfor {...props} />
     </div>
@@ -75,34 +77,55 @@ const ProductImage = ({ product, isSale }) => {
     }
     subImageRef.current.style.opacity = "0";
   });
-
   return (
     <div className="relative image-wrapper ">
       <div className=" top-0 z-[-10] w-full pt-[130%] bg-skeleton_color animate-skeleton"></div>
-      <div className="lazy-wrapper absolute top-0  h-full w-full opacity-0">
+      <div className="lazy-wrapper absolute top-0 h-full w-full opacity-0">
         <IsSale isSale={isSale} />
-        <Link ref={hoverRef} to={`/products/${product.slug}`}>
-          <img
-            className="w-full image h-full bg-cover "
-            lazy-src={product.image}
-            alt=""
-          />
-          <img
+        <div className="h-full " ref={hoverRef}>
+          <Link className="h-full" to={`/products/${product.slug}`}>
+            <img
+              className="w-full z-10 image h-full bg-cover "
+              lazy-src={product.image}
+              alt=""
+            />{" "}
+          </Link>
+          <div
             ref={subImageRef}
-            className=" absolute top-0 opacity-0 object-cover transition-all duration-300  w-full h-full "
-            src={product.subImage||product.sub_image[1]}
-            alt=""
-          />
-        </Link>
+            className="card absolute opacity-0 z-40 top-0 transition-all duration-300 w-full h-full"
+          >
+            <Swiper
+              loop={true}
+              modules={[Navigation]}
+              spaceBetween={0}
+              navigation={true}
+              className="mySwiper"
+            >
+              {product.sub_image.map((subImage) => (
+                <SwiperSlide>
+                  <Link to={`/products/${product.slug}`} className="block w-full" >
+                    <img
+                      className=" absolute top-0 object-cover transition-all duration-300  w-full h-full "
+                      src={subImage}
+                      alt=""
+                    />
+                  </Link>
+                </SwiperSlide>
+              ))}
+            </Swiper>
+          </div>
+        </div>
       </div>
     </div>
   );
 };
 
-const ProductInfor = ({ product, isSale,cardInforCss='' }) => {
+const ProductInfor = ({ product, isSale, cardInforCss = "" }) => {
   return (
     <div className={cardInforCss}>
-      <span className="block font-semibold mt-2 px-1 text-left">{product.brand}</span>
+      <span className="block font-semibold mt-2 px-1 text-left">
+        {product.brand}
+      </span>
       <div className="flex justify-between flex-col mder:flex-row text-[0.82rem] px-1 ">
         <span className="text-left">{product.title}</span>
         <span>

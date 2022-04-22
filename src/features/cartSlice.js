@@ -30,6 +30,7 @@ const cartSlice = createSlice({
       state.cartAmount = action.payload;
     },
     UPDATE_PRODUCTS_IN_CART: (state, action) => {
+      console.log(action.payload)
       state.allCartProducts = action.payload;
     },
     OPEN_CART_SIDEBAR: (state) => {

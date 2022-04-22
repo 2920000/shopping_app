@@ -20,6 +20,7 @@ import Loading from "../../components/Loading";
 import {
   allCartProductsSelector,
   fetchCart,
+  UPDATE_PRODUCTS_IN_CART,
 } from "../../features/cartSlice";
 import ShippingAddress from "./ShippingAddress";
 import OrderSummary from "./OrderSummary";
@@ -40,6 +41,7 @@ function Checkout() {
     if (orderStatus) {
       navigate("/user/purchase");
       dispatch(SET_ORDER_STATUS(false));
+      dispatch(UPDATE_PRODUCTS_IN_CART([]))
     }
   }, [orderStatus]);
 

@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { calculateStarsAverage } from "../../../helper";
 import StarRating from "../../../modal/RatingModal/RatingModalMain/ProductReviews/StarRating";
-import { Star } from "./ProductDetailRatings";
 
 const ProductRatingsOverview = ({ data, setProductRatingsList }) => {
   const [starsAverage, setStarsAverage] = useState(0);
@@ -66,13 +65,17 @@ const ProductRatingsOverview = ({ data, setProductRatingsList }) => {
 
   return (
     <div className="flex justify-between gap-14 w-full min-h-[100px] p-10 mt-4 bg-[#F7F8FA]">
-      <div className="flex flex-col items-center">
-        <div className="mb-1 text-lg">
-          <span className="text-4xl mr-1">{starsAverage}</span> trên 5
+      <div className="flex gap-2 flex-row-reverse md:flex-col items-center">
+        <div className="flex md:mb-1 text-lg">
+          <span className="md:text-4xl mr-1">{starsAverage}</span>{" "}
+          <div className="flex">
+            <span className="hidden md:inline">trên</span>
+            <span className="inline md:hidden">/</span> 5
+          </div>
         </div>
         <StarRating className="text-2xl" number={starsAverage - 1} />
       </div>
-      <div className="flex flex-wrap gap-2 text-sm">
+      <div className=" hidden md:flex flex-wrap gap-2 text-sm">
         {filterByStarRatingList.map((item, index) => (
           <div
             key={index}
