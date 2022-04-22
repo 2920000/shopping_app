@@ -108,15 +108,15 @@ const MainBlockSecond = () => {
   return (
     <div
       ref={blockSecondRef}
-      className="mt-[0px] opacity-0 translate-y-[-60px]  bg-white transition-all duration-700  "
+      className="mt-[0px] opacity-0 translate-y-[-60px] bg-white transition-all duration-700  "
     >
       <div className="text-center font-bold text-xl ">
         <div className=" inline py-2 px-5 border border-black">BỘ SƯU TẬP</div>
       </div>
-      <div className=" grid grid-cols-2 lg:flex w-full mt-10 cursor-pointer ">
+      <div className=" grid grid-cols-2 lg:flex mt-10 cursor-pointer ">
         {collection.map((e, index) => (
-          <div key={index} className="relative">
-            <img className="min-w-[100%]" src={e.image} alt="" />
+          <div key={index} className="relative w-full">
+            <img className="w-full" src={e.image} alt="" />
             <div className="absolute px-6 w-full bottom-10 lg:flex lg:flex-col lg:items-start">
               <span className="block whitespace-nowrap mb-5 text-center lg:text-[24px] text-white  tracking-wider ">
                 {e.title}

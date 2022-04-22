@@ -3,10 +3,8 @@ import collectionApi from "../../api/collectionApi";
 import ProductsSlider from "../../components/ProductsSlider/ProductsSlider";
 function NewIn() {
   return (
-    <div className="my-10 max-w-[1450px] m-auto ">
-      <div className="mx-2">
+    <div className="my-10 mx-2 mder:mx-10">
         <NewInHeading />
-      </div>
     </div>
   );
 }

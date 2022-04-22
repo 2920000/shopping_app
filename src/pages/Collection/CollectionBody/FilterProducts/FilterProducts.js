@@ -52,7 +52,7 @@ function FilterProducts() {
           <ProductCard
             key={index}
             product={product}
-            className=" mb-5  w-[calc(50%-8px)] lg:w-[calc(33.33%-8px)] "
+            className=" mb-5  w-[calc(50%-8px)] lg:w-[calc(33.33%-8px)] lger:w-[calc(25%-9px)] "
           />
         ))}
       </ProductsFlex>

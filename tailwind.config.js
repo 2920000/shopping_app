@@ -7,6 +7,7 @@ module.exports = {
         md: "500px",
         mder: "750px",
         lg: "800px",
+        lger:'1600px'
       },
       colors: {
         white: "#FFFFFF",
