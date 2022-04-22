@@ -2,7 +2,7 @@ import axios from "axios";
 import queryString from "query-string";
 
  const instance = axios.create({
-    baseURL: "http://localhost:5000",
+    baseURL: " https://ecommerce-lethanh.herokuapp.com",
     paramsSerializer: (params) => {
       return queryString.stringify({ ...params });
     },
