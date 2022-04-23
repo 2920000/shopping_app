@@ -2,21 +2,27 @@ import React, { useEffect, useRef, memo } from "react";
 import { Link } from "react-router-dom";
 import { SwiperSlide, Swiper } from "swiper/react";
 import { calculateSale, convertToPrice, qsa } from "../../helper";
-import { Autoplay, Navigation } from "swiper";
+import { Navigation } from "swiper";
 import useHover from "../../hooks/useHover";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
-const ProductCart = ({ product, className = "", cardInforCss = "" }) => {
+const ProductCart = ({
+  product,
+  className = "",
+  cardInforCss = "",
+  type = "",
+}) => {
   const isSale = product.sale !== 0;
   const props = {
     product,
     isSale,
     cardInforCss,
+    type,
   };
 
   return (
-    <div className={`${className}  transition-all duration-150 w-full h-full `}>
+    <div className={`${className} transition-all duration-150 w-full h-full `}>
       <ProductImage {...props} />
       <ProductInfor {...props} />
     </div>
@@ -32,14 +38,14 @@ const IsSale = ({ isSale }) => {
   return (
     <div
       id="sale"
-      className="absolute  z-20 bg-red text-white top-0 py-[8px] px-[14px] cursor-text font-bold "
+      className="absolute z-20 bg-red text-white top-0 text-sm md:text-base py-[5px] px-[11px] md:py-[8px] md:px-[14px] cursor-text font-semibold md:font-bold "
     >
       Sale
     </div>
   );
 };
 
-const ProductImage = ({ product, isSale }) => {
+const ProductImage = ({ product, isSale, type }) => {
   const subImageRef = useRef();
   const [hoverRef, hovered] = useHover();
 
@@ -85,34 +91,47 @@ const ProductImage = ({ product, isSale }) => {
         <div className="h-full " ref={hoverRef}>
           <Link className="h-full" to={`/products/${product.slug}`}>
             <img
-              className="w-full z-10 image h-full bg-cover "
+              className="w-full  image h-full bg-cover "
               lazy-src={product.image}
               alt=""
             />{" "}
           </Link>
           <div
             ref={subImageRef}
-            className="card absolute opacity-0 z-40 top-0 transition-all duration-300 w-full h-full"
+            className="card hidden md:block absolute opacity-0 top-0 transition-all duration-300 w-full h-full"
           >
-            <Swiper
-              loop={true}
-              modules={[Navigation]}
-              spaceBetween={0}
-              navigation={true}
-              className="mySwiper"
-            >
-              {product.sub_image.map((subImage) => (
-                <SwiperSlide>
-                  <Link to={`/products/${product.slug}`} className="block w-full" >
-                    <img
-                      className=" absolute top-0 object-cover transition-all duration-300  w-full h-full "
-                      src={subImage}
-                      alt=""
-                    />
-                  </Link>
-                </SwiperSlide>
-              ))}
-            </Swiper>
+            {type === "collection" ? (
+              <Swiper
+                loop={true}
+                modules={[Navigation]}
+                spaceBetween={0}
+                navigation={true}
+                className="mySwiper"
+              >
+                {product.sub_image.map((subImage) => (
+                  <SwiperSlide>
+                    <Link
+                      to={`/products/${product.slug}`}
+                      className="block w-full"
+                    >
+                      <img
+                        className=" absolute top-0 object-cover transition-all duration-300  w-full h-full "
+                        src={subImage}
+                        alt=""
+                      />
+                    </Link>
+                  </SwiperSlide>
+                ))}
+              </Swiper>
+            ) : (
+              <Link to={`/products/${product.slug}`} className="block w-full">
+                <img
+                  className=" absolute top-0 object-cover transition-all duration-300  w-full h-full "
+                  src={product.sub_image[0]}
+                  alt=""
+                />
+              </Link>
+            )}
           </div>
         </div>
       </div>
@@ -123,7 +142,7 @@ const ProductImage = ({ product, isSale }) => {
 const ProductInfor = ({ product, isSale, cardInforCss = "" }) => {
   return (
     <div className={cardInforCss}>
-      <span className="block font-semibold mt-2 px-1 text-left">
+      <span className="block text-sm  font-semibold mt-2 px-1 text-left">
         {product.brand}
       </span>
       <div className="flex justify-between flex-col mder:flex-row text-[0.82rem] px-1 ">

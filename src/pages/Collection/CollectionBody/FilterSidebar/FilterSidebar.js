@@ -11,7 +11,7 @@ function FilterSidebar() {
   const existingBrand = useSelector(existingBrandSelector);
   const existingColour = useSelector(existingColourSelector);
   const size = ["L", "M", "S", "XL", "XXL", "XXXL"];
-  const price = ["Dưới 600.000", "Từ 600.000 - 1.200.000", "Trên 1.200.000"];
+  const price = ["Dưới 600.000 đ", "600.000 đ - 1.200.000 đ", "1.200.000 đ - 3.000.000 đ"];
 
   const productFilter = [
     {

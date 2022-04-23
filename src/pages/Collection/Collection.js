@@ -10,18 +10,14 @@ function Collection() {
   window.scrollTo(0, 0);
   return (
     <div className="mx-4 mder:mx-10">
-      <div className="pt-10 ">
-        <CollectionHeader />
-      </div>
+      <CollectionHeader />
       <div className="flex pb-10">
         <ErrorBoundary>
           <FilterSidebar />
           <FilterProducts />
         </ErrorBoundary>
       </div>
-      <div>
-        <SuggestedProducts/>
-      </div>
+      <SuggestedProducts />
       <BackToTop />
     </div>
   );

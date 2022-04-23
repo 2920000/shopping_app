@@ -63,41 +63,39 @@ function SortOption() {
       search: url.toString(),
     });
   };
-  
+
   return (
-    <div>
-      <div className={`flex justify-end w-full relative `}>
-        <div ref={sortByWrapperRef} className=" relative max-w-[220px]  ">
-          <input
-            onChange={(e) => setInput(e.target.value)}
-            id="filter-input"
-            type="text"
-            placeholder="Sắp xếp theo"
-            className=" filter-input outline-none border border-[#efefef] placeholder:text-light_black text-sm cursor-pointer  h-[54px] pl-4"
-          />
-          <ul
-            ref={boxOptionRef}
-            id="filter-list"
-            className={`absolute top-[calc(100%)] text-light_black overflow-hidden max-h-0 transition-all duration-300  shadow-lg text-sm z-30 w-full  bg-white text-left left-0`}
-          >
-            {filterOption
-              .filter((option) => option.displayName.includes(input))
-              .map((item, index) => (
-                <li
-                  onClick={(e) => {
-                    handleFilter(item.value, e);
-                  }}
-                  className="list-none pl-4 py-2 cursor-pointer"
-                  key={index}
-                >
-                  {item.displayName}
-                </li>
-              ))}
-          </ul>
-          <span className="absolute  right-3 top-1/2 translate-y-[-50%] ">
-            <IoIosArrowDown />
-          </span>
-        </div>
+    <div className={`flex justify-end w-full relative `}>
+      <div ref={sortByWrapperRef} className=" relative min-w-[240px]  ">
+        <input
+          onChange={(e) => setInput(e.target.value)}
+          id="filter-input"
+          type="text"
+          placeholder="Sắp xếp theo"
+          className=" filter-input w-[calc(100%-16px)] md:w-full outline-none border border-[#efefef] placeholder:text-light_black text-sm cursor-pointer  h-[54px] pl-4"
+        />
+        <ul
+          ref={boxOptionRef}
+          id="filter-list"
+          className={`absolute top-[calc(100%)] text-light_black overflow-hidden max-h-0 transition-all duration-[1000ms]  shadow-lg text-sm z-30 w-full  bg-white text-left left-0`}
+        >
+          {filterOption
+            .filter((option) => option.displayName.includes(input))
+            .map((item, index) => (
+              <li
+                onClick={(e) => {
+                  handleFilter(item.value, e);
+                }}
+                className="list-none pl-4 py-2 cursor-pointer"
+                key={index}
+              >
+                {item.displayName}
+              </li>
+            ))}
+        </ul>
+        <span className="absolute  right-3 top-1/2 translate-y-[-50%] ">
+          <IoIosArrowDown />
+        </span>
       </div>
     </div>
   );

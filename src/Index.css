@@ -72,8 +72,8 @@ input::-webkit-inner-spin-button {
 }
 
 /* css arrow trong products slider list */
-.suggested .swiper-button-prev,
-.suggested .swiper-button-next {
+.swiper-button-prev,
+.swiper-button-next {
   background-color: black;
   width: 50px;
   height: 50px;
@@ -126,7 +126,6 @@ input::-webkit-inner-spin-button {
     background-color: black;
     width: 30px;
     height: 30px;
-    top: 70%;
   }
   .swiper-button-next::after,
   .swiper-button-prev::after {

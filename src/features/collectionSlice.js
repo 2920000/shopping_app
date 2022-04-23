@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import collectionApi from "../api/collectionApi";
 
-const fetchByCollection = createAsyncThunk(
+export const fetchByCollection = createAsyncThunk(
   "collection/fetchByCollection",
   async (payload) => {
     const response = await collectionApi.fetchByCollection(payload);
@@ -44,15 +44,15 @@ const collectionSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
-    builder.addCase(fetchByCollection.pending, (state,action) => {
-      state.isLoading=true
+    builder.addCase(fetchByCollection.pending, (state, action) => {
+      state.isLoading = true;
     });
     builder.addCase(fetchByCollection.fulfilled, (state, action) => {
       state.products = action.payload.pageArray;
       state.existingBrand = action.payload.brandData;
       state.existingColour = action.payload.colourData;
       state.productsNumberTotal = action.payload.total;
-      state.isLoading=false
+      state.isLoading = false;
     });
     builder.addCase(fetchByCollection.rejected, (state, action) => {
       state.products = [];
@@ -61,20 +61,14 @@ const collectionSlice = createSlice({
   },
 });
 
-const productsCollectionSelector = (state) => state.collection.products;
-const existingBrandSelector = (state) => state.collection.existingBrand;
-const existingColourSelector = (state) => state.collection.existingColour;
-const productsNumberTotalSelector = (state) =>
+export const productsCollectionSelector = (state) => state.collection.products;
+export const existingBrandSelector = (state) => state.collection.existingBrand;
+export const existingColourSelector = (state) =>
+  state.collection.existingColour;
+export const productsNumberTotalSelector = (state) =>
   state.collection.productsNumberTotal;
 
-const isLoadingSelector = (state) => state.collection.isLoading;
-export {
-  fetchByCollection,
-  productsCollectionSelector,
-  isLoadingSelector,
-  existingBrandSelector,
-  existingColourSelector,
-  productsNumberTotalSelector,
-};
+export const isLoadingSelector = (state) => state.collection.isLoading;
+
 export const { FILTER } = collectionSlice.actions;
 export default collectionSlice.reducer;

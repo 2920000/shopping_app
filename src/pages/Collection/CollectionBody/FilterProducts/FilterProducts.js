@@ -7,14 +7,17 @@ import {
   fetchByCollection,
   isLoadingSelector,
   productsCollectionSelector,
+  productsNumberTotalSelector,
 } from "../../../../features/collectionSlice";
 import CollectionSkeleton from "../../../../components/skeleton/CollectionSkeleton";
 import ProductsFlex from "../../../../components/ProductsFlex/ProductsFlex";
 import { ProductCard } from "../../../../components";
+import NotFoundProduct from "./NotFoundProduct";
 
 function FilterProducts() {
   const dispatch = useDispatch();
   const { collection } = useParams();
+  const productsNumberTotal = useSelector(productsNumberTotalSelector);
   const products = useSelector(productsCollectionSelector);
   const isLoading = useSelector(isLoadingSelector);
   const queryStr = useLocation().search;
@@ -44,19 +47,22 @@ function FilterProducts() {
   if (isLoading || !products) {
     return <CollectionSkeleton />;
   }
-
+  // if(products.length===0){
+  //   return <NotFoundProduct/>
+  // }
   return (
     <div className="w-full">
-      <ProductsFlex>
+      <ProductsFlex >
         {products?.map((product, index) => (
           <ProductCard
+            type="collection"
             key={index}
             product={product}
-            className=" mb-5  w-[calc(50%-8px)] lg:w-[calc(33.33%-8px)] lger:w-[calc(25%-9px)] "
+            className=" mb-5  w-[calc(50%-12px)] lg:w-[calc(33.33%-12px)] lger:w-[calc(25%-12px)] mr-[12px] "
           />
         ))}
       </ProductsFlex>
-      <Pagination />
+      <Pagination productsNumberTotal={productsNumberTotal} />
     </div>
   );
 }

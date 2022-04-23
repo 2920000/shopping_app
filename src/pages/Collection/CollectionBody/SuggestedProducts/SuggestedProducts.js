@@ -20,7 +20,7 @@ function SuggestedProducts() {
       <p className="text-center font-semibold text-3xl my-5 lg:my-10">
         Đề xuất cho bạn
       </p>
-      <ProductsSlider products={products} />
+      <ProductsSlider  products={products} />
     </div>
   );
 }

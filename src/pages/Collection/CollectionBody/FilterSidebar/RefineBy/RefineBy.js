@@ -1,13 +1,14 @@
 import { useNavigate, useLocation, useParams } from "react-router-dom";
 import { useEffect } from "react";
 import RefineItem from "./RefineItem";
+import queryString from "query-string";
 
 const RefineBy = () => {
   const navigate = useNavigate();
   const { collection } = useParams();
   const queryUrl = useLocation().search?.slice(1);
-  
-  const arrayParams=getParamsArray()
+
+  const arrayParams = filterParamsUrlArray();
 
   const allCheckBoxes = document.querySelectorAll("[type]");
 
@@ -16,16 +17,16 @@ const RefineBy = () => {
     collection,
     navigate,
   };
- 
+
   useEffect(() => {
     if (!queryUrl) {
       allCheckBoxes.forEach((e) => (e.checked = false));
     }
   }, [queryUrl]);
- 
+  console.log(arrayParams);
   return (
     <>
-     {arrayParams.length > 0 && (
+      {arrayParams.length > 0 && (
         <div className="pb-8 pt-[30px] border-b border-border_bottom_filter">
           <FilterOptionTitle {...filterOptionTitleProps} />
           <RefineGroup arrayParams={arrayParams} />
@@ -36,7 +37,6 @@ const RefineBy = () => {
 };
 
 export default RefineBy;
-
 
 const FilterOptionTitle = ({ allCheckBoxes, collection, navigate }) => {
   const hanldeDeleteAllChoices = () => {
@@ -56,32 +56,35 @@ const FilterOptionTitle = ({ allCheckBoxes, collection, navigate }) => {
   );
 };
 
-const RefineGroup = ({arrayParams}) => {
+const RefineGroup = ({ arrayParams }) => {
   const { collection } = useParams();
   return (
     <>
       {arrayParams.map((param) => {
-          return (
-            <li className="list-none">
-              <RefineItem
-                value={param[Object.keys(param)[0]]}
-                keySelected={Object.keys(param)[0]}
-                collection={collection}
-                />
-            </li>
-          );
+        return (
+          <li className="list-none">
+            <RefineItem
+              value={param[Object.keys(param)[0]]}
+              keySelected={Object.keys(param)[0]}
+              collection={collection}
+            />
+          </li>
+        );
       })}
     </>
   );
 };
 
-const getParamsArray=()=>{
+const filterParamsUrlArray = () => {
   let refineByArray = [];
-  const searchUrl = new URLSearchParams(window.location.search);
+  const paramsUrlObject = queryString.parse(window.location.search);
+  delete paramsUrlObject.sort;
+  delete paramsUrlObject.page;
+  delete paramsUrlObject.price;
+  const newSearchString = queryString.stringify(paramsUrlObject);
+  const searchUrl = new URLSearchParams(newSearchString);
   for (let pair of searchUrl.entries()) {
-    if (pair[0] !== "sort"&& pair[0] !== "page") {
-      refineByArray.push({[pair[0]]:pair[1]});
-    }
+    refineByArray.push({ [pair[0]]: pair[1] });
   }
-  return refineByArray
-}
+  return refineByArray;
+};
