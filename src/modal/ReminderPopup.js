@@ -4,7 +4,7 @@ import OverlayModal from "./reuseModalStructure/OverlayModal";
 import { CgDanger } from "react-icons/cg";
 import { IoCloseCircleOutline } from "react-icons/io5";
 import { addLocalStorage, getLocalStorage } from "../helper";
-function ReminderModal() {
+function ReminderPopup() {
   const [visible, setVisivle] = useState(false);
   useEffect(() => {
     const allowPopUp = getLocalStorage("attention");
@@ -31,7 +31,7 @@ function ReminderModal() {
               có thể đợi để trải nghiệm website
             </p>
           </div>
-          <span onClick={()=>setVisivle(false)}>
+          <span onClick={() => setVisivle(false)}>
             <IoCloseCircleOutline className="cursor-pointer text-2xl" />
           </span>
         </div>
@@ -41,4 +41,4 @@ function ReminderModal() {
   );
 }
 
-export default ReminderModal;
+export default ReminderPopup;

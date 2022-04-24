@@ -4,7 +4,7 @@ import queryString from "query-string";
 // mainUrl:"https://ecommerce-lethanh.herokuapp.com"
 //subUrl :"http://localhost:5000"
 const instance = axios.create({
-  baseURL: "http://localhost:5000",
+  baseURL: "https://ecommerce-lethanh.herokuapp.com",
   paramsSerializer: (params) => {
     return queryString.stringify({ ...params });
   },
