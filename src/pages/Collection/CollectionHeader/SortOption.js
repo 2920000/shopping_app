@@ -33,6 +33,7 @@ function SortOption() {
 
   useEffect(() => {
     const inputFilterElement = document.querySelector("#filter-input");
+    const box=boxOptionRef.current
     window.addEventListener("mousedown", (event) => {
       if (!boxOptionRef.current && !sortByWrapperRef.current) {
         return;
@@ -48,8 +49,8 @@ function SortOption() {
           ? "Nhập để tìm"
           : "Sắp xếp theo"
       }`;
-      boxOptionRef.current.style.maxHeight = `${
-        isSortByContainTarget && !isBoxOptionContainTarget ? "1000px" : "0"
+      box.style.maxHeight = `${
+        isSortByContainTarget && !isBoxOptionContainTarget ? "300px" : "0"
       }`;
     });
   });
@@ -65,14 +66,14 @@ function SortOption() {
   };
 
   return (
-    <div className={`flex justify-end w-full relative `}>
-      <div ref={sortByWrapperRef} className=" relative min-w-[240px]  ">
+    <div className=" w-1/2 mder:max-w-[220px]">
+      <div ref={sortByWrapperRef} className=" relative   ">
         <input
           onChange={(e) => setInput(e.target.value)}
           id="filter-input"
           type="text"
           placeholder="Sắp xếp theo"
-          className=" filter-input w-[calc(100%-16px)] md:w-full outline-none border border-[#efefef] placeholder:text-light_black text-sm cursor-pointer  h-[54px] pl-4"
+          className=" filter-input w-[calc(100%)] md:w-full outline-none border border-[#efefef] placeholder:text-light_black text-sm cursor-pointer  h-[54px] pl-4"
         />
         <ul
           ref={boxOptionRef}

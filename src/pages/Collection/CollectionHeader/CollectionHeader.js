@@ -8,14 +8,14 @@ function CollectionHeader() {
   const { collection } = useParams();
   return (
     <div className="pt-10 mr-[12px]">
-      <div className=" text-xs mb-2">
+      <div className=" text-xs mb-5 mder:mb-0">
         <Link to="/" className="mr-2">
           Trang chủ
         </Link>
         <span className="mr-2">/</span>
         <span>{convertToVietnamese(collection)}</span>
       </div>
-      <div className="flex justify-between mder:justify-end w-full text-right mb-2 ">
+      <div className="flex w-full gap-[12px] mb-5 md:justify-end">
         <MobileFilter />
         <SortOption />
       </div>

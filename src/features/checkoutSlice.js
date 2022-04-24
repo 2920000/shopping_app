@@ -4,10 +4,10 @@ import { addOrders } from "../api/checkoutApi";
 
 export const addOrdersToDatabase = createAsyncThunk(
   "checkout/addOrders",
-  async (payload, { rejectWithValue,dispatch }) => {
+  async (payload, { rejectWithValue}) => {
     try {
       const response = await addOrders(payload);
-      cartApi.deleteAll(payload.userId);
+      await cartApi.deleteAll(payload.userId);
       return response;
     } catch (error) {
       return rejectWithValue(error.response.data);

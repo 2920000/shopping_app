@@ -18,7 +18,7 @@ export const updateShippingInforToDatabase = createAsyncThunk(
   "user/updateShippingInfor",
   async (payload, { dispatch, rejectWithValue }) => {
     try {
-      const response = await userApi.updateShippingAddress({ ...payload });
+      const response = await userApi.updateUserInfor({ ...payload });
       dispatch(CLOSE_SHIPPING_INFOR_MODAL());
       return response;
     } catch (error) {
@@ -27,43 +27,44 @@ export const updateShippingInforToDatabase = createAsyncThunk(
   }
 );
 const initialState = {
-  shippingInfor: null,
-  hasShippingInfor: false,
-  isUpdateShippingInfor: false,
+  shippingAddress: null,
+  hasShippingAddress: false,
+  isUpdateShippingAddress: false,
 };
 const userSlice = createSlice({
   name: "user",
   initialState,
   reducers: {
     OPEN_SHIPPING_INFOR_MODAL: (state) => {
-      state.hasShippingInfor = true;
+      state.hasShippingAddress = true;
     },
     CLOSE_SHIPPING_INFOR_MODAL: (state) => {
-      state.hasShippingInfor = false;
+      state.hasShippingAddress = false;
     },
   },
 
   extraReducers: (builder) => {
     builder.addCase(updateShippingInforToDatabase.pending, (state, action) => {
-      state.isUpdateShippingInfor = true;
+      state.isUpdateShippingAddress = true;
     });
     builder.addCase(
       updateShippingInforToDatabase.fulfilled,
       (state, action) => {
-        state.isUpdateShippingInfor = false;
-        state.shippingInfor = action.payload;
+        state.isUpdateShippingAddress = false;
+        state.shippingAddress = action.payload;
       }
     );
     builder.addCase(fetchShippingAddress.fulfilled, (state, action) => {
-      state.shippingInfor = action.payload;
+      state.shippingAddress = action.payload;
     });
   },
 });
 export default userSlice.reducer;
 
-export const hasShippingInforSelector = (state) => state.user.hasShippingInfor;
-export const shippingInforSelector = (state) => state.user.shippingInfor;
-export const isUpdateShippingInforSelector = (state) =>
-  state.user.isUpdateShippingInfor;
+export const hasShippingAddressSelector = (state) =>
+  state.user.hasShippingAddress;
+export const shippingAddressSelector = (state) => state.user.shippingAddress;
+export const isUpdateShippingAddressSelector = (state) =>
+  state.user.isUpdateShippingAddress;
 export const { OPEN_SHIPPING_INFOR_MODAL, CLOSE_SHIPPING_INFOR_MODAL } =
   userSlice.actions;

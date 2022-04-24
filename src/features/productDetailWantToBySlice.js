@@ -9,7 +9,7 @@ const initialState = {
     price: null,
     amount: 1,
     sale: null,
-    size: "S",
+    size: "",
   },
 };
 const productDetailWantToBuySlice = createSlice({

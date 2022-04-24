@@ -1,5 +1,6 @@
 import StarRating from "../../../modal/RatingModal/RatingModalMain/ProductReviews/StarRating";
 import { BiLike } from "react-icons/bi";
+import { reverseArray } from "../../../helper";
 const ProductRatingsList = ({ productRatingsList }) => {
   if (productRatingsList?.length === 0) {
     return (
@@ -10,7 +11,7 @@ const ProductRatingsList = ({ productRatingsList }) => {
   }
   return (
     <div className="px-5">
-      {productRatingsList?.map((productRating, index) => (
+      {reverseArray(productRatingsList)?.map((productRating, index) => (
         <ProductRatingItem productRating={productRating} key={index} />
       ))}
     </div>

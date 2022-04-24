@@ -3,22 +3,22 @@ import ReactDom from "react-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { userSelector } from "../features/accountSlice";
 import {
-  isUpdateShippingInforSelector,
+  isUpdateShippingAddressSelector,
   updateShippingInforToDatabase,
 } from "../features/userSlice";
 import Loading from "../components/Loading";
 import { Link } from "react-router-dom";
 import { validateForm } from "../helper";
-function ShippingInforModal() {
+function ShippingAddressModal() {
   const dispatch = useDispatch();
   const [shippingInfor, setShippingInfor] = useState({
     fullName: "",
     phoneNumber: "",
     address: "",
   });
-  
+
   const user = useSelector(userSelector);
-  const isUpdateShippingInfor = useSelector(isUpdateShippingInforSelector);
+  const isUpdateShippingInfor = useSelector(isUpdateShippingAddressSelector);
   const allowSubmit = !!(
     shippingInfor.fullName &&
     shippingInfor.phoneNumber &&
@@ -39,7 +39,11 @@ function ShippingInforModal() {
     const notAllowSubmitToDatabase = validateForm.validate();
     if (notAllowSubmitToDatabase) return;
     dispatch(
-      updateShippingInforToDatabase({ userId: user._id, ...shippingInfor })
+      updateShippingInforToDatabase({
+        userId: user._id,
+        username: user.username,
+        ...shippingInfor,
+      })
     );
   };
 
@@ -113,4 +117,4 @@ function ShippingInforModal() {
   );
 }
 
-export default ShippingInforModal;
+export default ShippingAddressModal;

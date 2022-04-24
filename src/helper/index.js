@@ -20,6 +20,7 @@ import {
   removeVietnameseTones,
   replaceWhitespace,
   validateForm,
+  reverseArray
 } from "./Others";
 import {
   addLocalStorage,
@@ -49,4 +50,5 @@ export {
   removeLocalStorage,
   getLocalStorage,
   calculateStarsAverage,
+  reverseArray
 };

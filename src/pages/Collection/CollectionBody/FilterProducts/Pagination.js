@@ -8,7 +8,7 @@ function Pagination({ productsNumberTotal = 0 }) {
 
   return (
     <div className="flex flex-col mder:flex-row justify-between items-center w-full py-2.5 mt-10 mb-14 border-y border-light_grey">
-      <span className="font-bold text-light_grey mb-10">
+      <span className="font-bold text-light_grey mb-10 mder:mb-0">
         {productsNumberTotal} sản phẩm
       </span>
       {pageTotal !== 1 && (

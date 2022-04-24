@@ -1,13 +1,8 @@
 import instance from "./axiosClient";
 
 const userApi = {
-  addUser: async (payload) => {
-    return instance.post("/user/createUser", {
-      payload,
-    });
-  },
-  updateShippingAddress: async (payload) => {
-    return instance.post("/user/updateShippingInfor", {
+  updateUserInfor: async (payload) => {
+    return instance.post("/user/updateUserInfor", {
       payload,
     });
   },

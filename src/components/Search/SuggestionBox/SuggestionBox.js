@@ -22,7 +22,7 @@ function SuggestionBox() {
 
   return (
     <div
-      className={`absolute top-[48px] z-40  w-full min-h-[50px] max-h-[570px]  rounded-sm shadow-lg bg-white py-2 `}
+      className={`absolute top-[48px] z-40  w-full min-h-[50px] max-h-[570px] overflow-auto  rounded-sm shadow-lg bg-white py-2 `}
     >
       <span className="w-4 h-4 absolute bg-white z-[-1] top-[-6px] left-[22px]  rotate-45"></span>
       {isCurrentSearchBoxOpening && <CurrentSearchBox />}

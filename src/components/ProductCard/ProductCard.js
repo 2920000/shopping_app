@@ -86,7 +86,7 @@ const ProductImage = ({ product, isSale, type }) => {
   return (
     <div className="relative image-wrapper ">
       <div className=" top-0 z-[-10] w-full pt-[130%] bg-skeleton_color animate-skeleton"></div>
-      <div className="lazy-wrapper absolute top-0 h-full w-full opacity-0">
+      <div className="lazy-wrapper absolute z-20 top-0 h-full w-full opacity-0">
         <IsSale isSale={isSale} />
         <div className="h-full " ref={hoverRef}>
           <Link className="h-full" to={`/products/${product.slug}`}>
@@ -145,7 +145,7 @@ const ProductInfor = ({ product, isSale, cardInforCss = "" }) => {
       <span className="block text-sm  font-semibold mt-2 px-1 text-left">
         {product.brand}
       </span>
-      <div className="flex justify-between flex-col mder:flex-row text-[0.82rem] px-1 ">
+      <div className="flex justify-between items-start flex-col mder:flex-row text-[0.82rem] px-1 ">
         <span className="text-left">{product.title}</span>
         <span>
           {isSale && (

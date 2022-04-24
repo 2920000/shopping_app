@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import QuantityInput from "../../../../pages/ProductDetail/QuantityInput";
 
-const ProductName = ({ cartProduct, index, user, allCartProducts }) => {
+const ProductName = ({ cartProduct,user }) => {
  const [update,setUpdate]=useState(false)
  useEffect(()=>{
    if(user){

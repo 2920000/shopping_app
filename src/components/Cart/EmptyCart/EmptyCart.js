@@ -1,16 +1,11 @@
 import { IoClose } from "react-icons/io5";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch} from "react-redux";
 import {
-  allCartProductsSelector,
   CLOSE_CART_SIDEBAR,
 } from "../../../features/cartSlice";
 
 const EmptyCart = () => {
   const dispatch = useDispatch();
-  const allCartProducts = useSelector(allCartProductsSelector);
-  if (allCartProducts) {
-    return <></>;
-  }
   return (
     <div>
       <div className="flex text-right justify-end  text-3xl py-2 ">

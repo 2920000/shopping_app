@@ -29,7 +29,7 @@ function Purchased() {
   useEffect(() => {
     refetch();
   }, [toggleUpdate]);
-
+console.log(data)
   if (isError) {
     return <>Something wrong</>;
   }

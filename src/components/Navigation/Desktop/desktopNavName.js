@@ -3,15 +3,15 @@ const desktopNavName = [
     name: "Hàng mới",
     sub:[{
       subName:'Đồ nam mới',
-      params:''
+      params:'mens-clothing'
     },
     {
       subName:'Đồ nữ mới',
-      params:''
+      params:'womens-clothing'
     },
     {
       subName:'Phụ kiện mới',
-      params:''
+      params:'accessory'
     }]
   },
   {

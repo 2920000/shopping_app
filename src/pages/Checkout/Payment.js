@@ -42,7 +42,7 @@ const Payment = ({ cartProducts }) => {
 
   return (
     <div className="flex flex-col w-full px-2 items-end mt-5 mb-16 bg-white">
-      <div className="flex flex-col gap-y-3 m-6">
+      <div className="flex flex-col gap-y-3 my-5 md:m-6">
         {inforPayment.map((infor, index) => (
           <div
             key={index}

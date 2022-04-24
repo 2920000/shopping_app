@@ -21,8 +21,8 @@ const SearchBox = () => {
 
   return (
     <div className="px-3">
-      <h3 className="mb-4">Sản phẩm</h3>
-      <ul className="grid grid-cols-2 z-30 ">
+      <h3 className="mb-4 text-center lg:text-left ">Sản phẩm</h3>
+      <ul className="grid  grid-cols-1 lg:grid-cols-2 z-30 ">
         {currentProductsBySearch.slice(0, 6).map((product) => (
           <SearchItem key={product._id} product={product} />
         ))}
@@ -38,7 +38,7 @@ export default SearchBox;
 
 const NotFoundProduct = () => {
   return (
-    <div className="flex items-center justify-center mt-1">
+    <div className="flex p-2 flex-col md:flex-row items-center justify-center mt-1">
       Xin lỗi, không thấy bất kỳ sản phẩm nào{" "}
       <ImSad2 className="ml-2 mt-[1px] text-red-500 text-red" />{" "}
     </div>

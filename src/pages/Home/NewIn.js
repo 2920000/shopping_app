@@ -51,7 +51,7 @@ const NewInHeading = () => {
   return (
     <div className="text-center">
       <h3 className="font-semibold text-3xl tracking-wide">Mới về</h3>
-      <div className="flex justify-center gap-4 mt-2 mb-10 font-semibold text-xl">
+      <div className="flex justify-center mt-2 mb-10 font-semibold text-xl">
         {newInList.map((newInItem, index) => (
           <p
             key={index}
@@ -62,7 +62,7 @@ const NewInHeading = () => {
               collection === newInItem.collection
                 ? "text-black"
                 : "text-[#a4a4a4]"
-            }`}
+            } mr-3 `}
           >
             {newInItem.heading}
           </p>

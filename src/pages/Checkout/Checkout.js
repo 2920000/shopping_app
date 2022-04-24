@@ -3,9 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { userSelector } from "../../features/accountSlice";
 import {
   fetchShippingAddress,
-  hasShippingInforSelector,
+  hasShippingAddressSelector,
 } from "../../features/userSlice";
-import ShippingInforModal from "../../modal/ShippingInforModal";
 import { useGetCartProductsQuery } from "../../services/cartProductsApi";
 import {
   isOrderingSelector,
@@ -24,11 +23,12 @@ import {
 } from "../../features/cartSlice";
 import ShippingAddress from "./ShippingAddress";
 import OrderSummary from "./OrderSummary";
+import { ShippingAddressModal } from "../../modal";
 function Checkout() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const user = useSelector(userSelector);
-  const hasShippingInfor = useSelector(hasShippingInforSelector);
+  const hasShippingInfor = useSelector(hasShippingAddressSelector);
   const isOrdering = useSelector(isOrderingSelector);
   const orderStatus = useSelector(orderStatusSelector);
   const cart = useSelector(allCartProductsSelector);
@@ -79,7 +79,7 @@ function Checkout() {
           <Payment cartProducts={cart} />
         </ErrorBoundary>
       </div>
-      {hasShippingInfor && <ShippingInforModal />}
+      {hasShippingInfor && <ShippingAddressModal />}
       {isOrdering && <Loading />}
     </div>
   );

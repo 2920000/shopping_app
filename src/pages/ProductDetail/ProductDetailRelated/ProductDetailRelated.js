@@ -11,7 +11,7 @@ function ProductDetailRelated({ productId }) {
     return <></>;
   }
   return (
-    <div className="mt-20">
+    <div className="mt-20 mx-3">
       <p className="font-semibold text-3xl my-5 lg:my-10">
         Có thể bạn thích
       </p>

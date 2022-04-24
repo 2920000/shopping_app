@@ -1,9 +1,10 @@
 import { MdOutlinePlace } from "react-icons/md";
 import { useSelector } from "react-redux";
-import { shippingInforSelector } from "../../features/userSlice";
+import { shippingAddressSelector} from "../../features/userSlice";
 
 const ShippingAddress = () => {
-  const shippingInfor = useSelector(shippingInforSelector);
+  const shippingInfor = useSelector(shippingAddressSelector);
+ console.log(shippingInfor)
   return (
     <div className=" bg-white my-3 pt-6 pb-5 px-2 md:px-8 gap-2">
       <div className="flex items-center text-xl mb-2">
@@ -11,7 +12,7 @@ const ShippingAddress = () => {
       </div>
       {shippingInfor && (
         <div>
-          <div className="inline-block font-bold  mr-4">
+          <div className="block md:inline-block font-bold  mr-4">
             <span className="mr-1">{shippingInfor?.fullName}</span>
             <span>
               {shippingInfor.phoneNumber && "(+84)"} {shippingInfor.phoneNumber}

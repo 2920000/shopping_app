@@ -9,9 +9,9 @@ import useResizeObserver from "../../../hooks/useResizeObserver";
 import ProductOverview from "./ProductOverview";
 import { qs } from "../../../helper";
 import { useDispatch } from "react-redux";
-import { CLEAR_DATA } from "../../../features/productDetailWantToBySlice";
+import { CLEAR_DATA, UPDATE_PRODUCT_DETAIL_WANT_TO_BUY } from "../../../features/productDetailWantToBySlice";
 function ProductDetailInformation({ productDetail }) {
-  const dispatch=useDispatch()
+  const dispatch = useDispatch();
   const [styleDetailRight, setStyleDetailRight] = useState({});
   const emptyRightRef = useRef();
   const rightDetailInnerRef = useRef();
@@ -19,6 +19,13 @@ function ProductDetailInformation({ productDetail }) {
   const props = {
     productDetail,
   };
+
+  useEffect(() => {
+    dispatch(UPDATE_PRODUCT_DETAIL_WANT_TO_BUY({size:productDetail.size[0]}))
+    return () => {
+      dispatch(CLEAR_DATA());
+    };
+  }, []);
 
   const bodyRef = useRef(qs("body"));
   const callbackSaved = useCallback((entry) => {
@@ -54,12 +61,6 @@ function ProductDetailInformation({ productDetail }) {
       setStyleDetailRight({});
     }
   });
-
-  useEffect(() => {
-    return () => {
-      dispatch(CLEAR_DATA())
-    };
-  }, []);
 
   return (
     <div className=" relative mt-5 lg:mt-0 w-full lg:w-[40%] lg:max-w-[400px]">
