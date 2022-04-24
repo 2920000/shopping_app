@@ -8,6 +8,7 @@ import {
 } from "react-router-dom";
 import { AnnouncemetBar, DesktopNav, Footer, Header } from "./components";
 import { userSelector } from "./features/accountSlice";
+import ReminderModal from "./modal/ReminderModal";
 import {
   Account,
   Collection,
@@ -29,11 +30,15 @@ function App() {
         <AnnouncemetBar />
         <Header />
         <DesktopNav />
+        <ReminderModal />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/collection/:collection" element={<Collection />} />
           <Route path="/products/:slug" element={<ProductDetail />} />
-          <Route path="/account" element={user?<Navigate to='/'/>:<Account />}>
+          <Route
+            path="/account"
+            element={user ? <Navigate to="/" /> : <Account />}
+          >
             <Route path="login" element={<Login />} />
             <Route path="register" element={<Register />} />
           </Route>
