@@ -8,20 +8,22 @@ function DesktopNav() {
     return <></>;
   }
   return (
-    <div className="bg-black font-montserrat text-white hidden lg:block">
       <NavList>
         {desktopNavName.map((e, index) => (
           <NavItem e={e} key={index} />
         ))}
       </NavList>
-    </div>
   );
 }
 
 export default DesktopNav;
 
 const NavList = (props) => {
-  return <ul className="flex flex-wrap justify-center">{props.children}</ul>;
+  return (
+    <ul className=" flex-wrap justify-center bg-black font-montserrat text-white hidden lg:flex">
+      {props.children}
+    </ul>
+  );
 };
 const NavItem = ({ e }) => {
   const menuRef = useRef();

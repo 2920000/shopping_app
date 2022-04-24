@@ -14,6 +14,8 @@ const initialState = {
   isLoading: false,
   existingBrand: [],
   existingColour: [],
+  existingSize: [],
+  existingPrice: [],
   productsNumberTotal: 0,
 };
 
@@ -51,6 +53,8 @@ const collectionSlice = createSlice({
       state.products = action.payload.pageArray;
       state.existingBrand = action.payload.brandData;
       state.existingColour = action.payload.colourData;
+      state.existingSize = action.payload.sizeData;
+      state.existingPrice = action.payload.priceData;
       state.productsNumberTotal = action.payload.total;
       state.isLoading = false;
     });
@@ -65,6 +69,8 @@ export const productsCollectionSelector = (state) => state.collection.products;
 export const existingBrandSelector = (state) => state.collection.existingBrand;
 export const existingColourSelector = (state) =>
   state.collection.existingColour;
+export const existingSizeSelector = (state) => state.collection.existingSize;
+export const existingPriceSelector = (state) => state.collection.existingPrice;
 export const productsNumberTotalSelector = (state) =>
   state.collection.productsNumberTotal;
 

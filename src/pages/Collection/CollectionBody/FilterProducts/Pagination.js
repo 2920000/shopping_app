@@ -5,7 +5,6 @@ function Pagination({ productsNumberTotal = 0 }) {
   const pageTotal = Math.ceil(productsNumberTotal / 9);
   const searchUrl = new URLSearchParams(window.location.search);
   const currentPage = Number(searchUrl.get("page")) || 1;
- console.log(pageTotal,currentPage)
   return (
     <div className="flex flex-col mder:flex-row justify-between items-center w-full py-2.5 mt-10 mb-14 border-y border-light_grey">
       <span className="font-bold text-light_grey mb-10 mder:mb-0">

@@ -15,7 +15,7 @@ function CollectionHeader() {
         <span className="mr-2">/</span>
         <span>{convertToVietnamese(collection)}</span>
       </div>
-      <div className="flex w-full gap-[12px] mb-5 md:justify-end">
+      <div className="flex w-full mb-5 md:justify-end">
         <MobileFilter />
         <SortOption />
       </div>

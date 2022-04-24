@@ -88,7 +88,7 @@ const MainBlockSecond = () => {
       image:
         "https://cdn.shopify.com/s/files/1/2153/3679/files/EDGE_CAT_BANNER_400_x_5332.jpg?v=1646698447",
       title: "Womens Tops",
-      link: "mens-t-shirt",
+      link: "womens-bodysuites",
     },
     {
       image:
@@ -106,7 +106,7 @@ const MainBlockSecond = () => {
       image:
         "https://cdn.shopify.com/s/files/1/2153/3679/files/EDGE_CAT_BANNER_400_x_5333.jpg?v=1646698589",
       title: "Men's Pants",
-      link: "womens-t-shirt",
+      link: "mens-pants",
     },
   ];
   return (
@@ -117,13 +117,13 @@ const MainBlockSecond = () => {
       <div className="text-center font-bold text-xl ">
         <div className=" inline py-2 px-5 border border-black">BỘ SƯU TẬP</div>
       </div>
-      <div className=" grid grid-cols-2 lg:flex mt-10 cursor-pointer ">
+      <div className=" grid grid-cols-2 lg:flex mt-10">
         {collection.map((e, index) => (
           <div key={index} className="relative w-full">
             <img className="w-full" src={e.image} alt="" />
             <div className="absolute px-6 w-full bottom-10 lg:flex lg:flex-col lg:items-start">
               <span className="block whitespace-nowrap mb-5 text-center lg:text-[24px] text-white  tracking-wider ">
-                {e.title}
+                <Link to={`/collection/${e.link}`}>{e.title}</Link>
               </span>
               <div className="w-full font-semibold lg:font-bold text-[14px] py-0.5 text-center lg:max-w-[130px] lg:min-h-[40px] lg:flex lg:items-center lg:justify-center bg-black text-white cursor-pointer hover:bg-white hover:text-black transition-all duration-150 ">
                 <Link to={`/collection/${e.link}`}>MUA SẮM </Link>
