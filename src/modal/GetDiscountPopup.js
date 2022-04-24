@@ -5,7 +5,7 @@ import ReactDOM from "react-dom";
 import useResizeObserver from "../hooks/useResizeObserver.js";
 import { addLocalStorage, getLocalStorage, qs } from "../helper/index.js";
 
-const Popup = () => {
+const GetDiscountPopup = () => {
   const emailInputRef = useRef();
   const nameInputRef = useRef();
   const getDiscountBoxRef = useRef();
@@ -34,7 +34,7 @@ const Popup = () => {
       setTimeout(() => {
         setVisivle(true);
         document.body.style.overflow = "hidden";
-      }, 3000);
+      },1000);
       addLocalStorage("discountForm", true);
     }
   }, []);
@@ -143,4 +143,4 @@ const Popup = () => {
   );
 };
 
-export default Popup;
+export default GetDiscountPopup;

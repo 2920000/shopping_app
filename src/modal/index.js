@@ -1,4 +1,5 @@
-import Popup from "./Popup";
 import RoomableImage from "./RoomableImage";
 import ShippingAddressModal from "./ShippingAddressModal";
-export {Popup,ShippingAddressModal,RoomableImage}
+import GetDiscountPopup from "./GetDiscountPopup";
+import ReminderPopup from "./ReminderPopup";
+export { GetDiscountPopup, ShippingAddressModal, RoomableImage, ReminderPopup };

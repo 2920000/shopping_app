@@ -8,7 +8,6 @@ import {
 } from "react-router-dom";
 import { AnnouncemetBar, DesktopNav, Footer, Header } from "./components";
 import { userSelector } from "./features/accountSlice";
-import ReminderPopup from "./modal/ReminderPopup";
 import {
   Account,
   Collection,
@@ -30,7 +29,6 @@ function App() {
         <AnnouncemetBar />
         <Header />
         <DesktopNav />
-        <ReminderPopup />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/collection/:collection" element={<Collection />} />

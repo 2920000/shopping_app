@@ -6,6 +6,7 @@ import useEventListener from "../../hooks/useEventListener";
 import FilterSidebar from "./CollectionBody/FilterSidebar";
 import FilterProducts from "./CollectionBody/FilterProducts";
 import SuggestedProducts from "./CollectionBody/SuggestedProducts";
+import { ReminderPopup } from "../../modal";
 function Collection() {
   window.scrollTo(0, 0);
   return (
@@ -19,6 +20,7 @@ function Collection() {
       </div>
       <SuggestedProducts />
       <BackToTop />
+      <ReminderPopup />
     </div>
   );
 }
