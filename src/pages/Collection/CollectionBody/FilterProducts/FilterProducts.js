@@ -47,9 +47,9 @@ function FilterProducts() {
   if (isLoading || !products) {
     return <CollectionSkeleton />;
   }
-  // if(products.length===0){
-  //   return <NotFoundProduct/>
-  // }
+  if(products.length===0){
+    return <NotFoundProduct/>
+  }
   return (
     <div className="w-full">
       <ProductsFlex >

@@ -13,7 +13,10 @@ function Pagination({ productsNumberTotal = 0 }) {
       </span>
       {pageTotal !== 1 && (
         <>
-          <ul className="flex ">
+          <ul
+            onClick={() => window.scrollTo({ behavior: "smooth", top: 0 })}
+            className="flex "
+          >
             {currentPage !== 1 && <PaginationPre />}
             <PaginationNumber pageTotal={pageTotal} currentPage={currentPage} />
             {currentPage !== pageTotal && <PaginationNext />}
